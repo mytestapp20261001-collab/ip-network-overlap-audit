@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "slug": "ip-network-overlap-audit",
+  "domain": "protocol",
+  "guidance_group": "maximal",
+  "source_commit": "1286096c10a23bbb04aca83679ae3c31f3326030",
+  "source_repository": "mytestapp20261001-collab/mytest-engineering-toolbox",
+  "source_repository_id": 1411411288,
+  "source_path": "tools/ip-network-overlap-audit",
+  "root_path": ".",
+  "publication_status": "prepared_only; coordinator verifies final repository identity and remote CI",
+  "expected_repository": "mytestapp20261001-collab/ip-network-overlap-audit",
+  "repository_id": null,
+  "preserved_files": [
+    {
+      "path": "OPTIONAL_MYTEST.md",
+      "size_bytes": 3080,
+      "sha256": "377811f43d46b8df1469a912361ab8a2abf344e939e33ed0bca1631409f8dc17",
+      "git_blob_sha1": "9298c9a7a4f74ff0cefc85eac5fdcac40f789839",
+      "utf8": true,
+      "source_path": "tools/ip-network-overlap-audit/OPTIONAL_MYTEST.md"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 3983,
+      "sha256": "69e8d2861fa5aa1d23f2f93b98b96f0388334b5fd22275b84aed8789e4a1d513",
+      "git_blob_sha1": "a28b4bc134d2eb5a08c8f1c2aefe0a9caa624c43",
+      "utf8": true,
+      "source_path": "tools/ip-network-overlap-audit/README.md"
+    },
+    {
+      "path": "SKILL.md",
+      "size_bytes": 1842,
+      "sha256": "521bdb1ba590b18807ba9f6f3502a081fec8cbe98aba9f7ebc88c712726ddbd8",
+      "git_blob_sha1": "edf7c015a7b59ef95511e719f1a4696e69e58880",
+      "utf8": true,
+      "source_path": "tools/ip-network-overlap-audit/SKILL.md"
+    },
+    {
+      "path": "examples/bad.json",
+      "size_bytes": 107,
+      "sha256": "867e78e1cf8cee913e9dfc06c173bfb19c568b0a1afbbd63bf76e9defd4604e8",
+      "git_blob_sha1": "cfe05638a90a835f0113f3fd269fd5384f9b45bb",
+      "utf8": true,
+      "source_path": "tools/ip-network-overlap-audit/examples/bad.json"
+    },
+    {
+      "path": "examples/good.json",
+      "size_bytes": 59,
+      "sha256": "c4f05c3e5b2fc63416dd34245d420fcc7499e1f6662305a6e4c6a3b9b1dddfc4",
+      "git_blob_sha1": "f4f2f613015cb78618c5b0cbf5dbd01466da002f",
+      "utf8": true,
+      "source_path": "tools/ip-network-overlap-audit/examples/good.json"
+    },
+    {
+      "path": "test_tool.py",
+      "size_bytes": 5053,
+      "sha256": "ad7ec7906efebdf948fb27190fcb2448e84ea1308f1b210e168bfeae3a6d109b",
+      "git_blob_sha1": "7267a30031381b93884e8c6593d881606b6e8383",
+      "utf8": true,
+      "source_path": "tools/ip-network-overlap-audit/test_tool.py"
+    },
+    {
+      "path": "tool.py",
+      "size_bytes": 6117,
+      "sha256": "dc6b786ad581bc7e6c6b04b0e876a571359b82c4232aa1ce12ae9ee51d197f91",
+      "git_blob_sha1": "a598db433df074aa301e48d0eaff516520f9bd7c",
+      "utf8": true,
+      "source_path": "tools/ip-network-overlap-audit/tool.py"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 1076,
+      "sha256": "dce76471613629e93f3f98b7aaa6f72ff9adb88204a3f83d3045952017ab2f46",
+      "git_blob_sha1": "677c4463d59b560db9c1fde1052eff6eefa6441a",
+      "utf8": true,
+      "source_path": "LICENSE"
+    },
+    {
+      "path": ".gitignore",
+      "size_bytes": 62,
+      "sha256": "e4d5aecc4cd36f593c2e7f3dad08b24261b13466b898004a445614058d29d8de",
+      "git_blob_sha1": "fe9f8fb619601213cbfef4f6eadb5d413d8f7f01",
+      "utf8": true,
+      "source_path": ".gitignore"
+    }
+  ],
+  "readme_checks": [
+    {
+      "label": "README example",
+      "args": [
+        "tool.py",
+        "--input",
+        "examples/good.json"
+      ],
+      "expected_exit": 0,
+      "output": "json",
+      "documented_command": "python3 tool.py --input examples/good.json"
+    },
+    {
+      "label": "README example",
+      "args": [
+        "tool.py",
+        "--input",
+        "examples/bad.json"
+      ],
+      "expected_exit": 1,
+      "output": "json",
+      "documented_command": "python3 tool.py --input examples/bad.json"
+    },
+    {
+      "label": "README invalid JSON shape",
+      "args": [
+        "tool.py"
+      ],
+      "stdin": "{}\n",
+      "expected_exit": 2,
+      "output": "json",
+      "documented_command": "printf '%s\\n' '{}' | python3 tool.py"
+    },
+    {
+      "label": "CLI help",
+      "args": [
+        "tool.py",
+        "--help"
+      ],
+      "expected_exit": 0,
+      "output": "help"
+    },
+    {
+      "label": "CLI missing input",
+      "args": [
+        "tool.py"
+      ],
+      "expected_exit": 2,
+      "output": "json"
+    },
+    {
+      "label": "CLI unknown argument",
+      "args": [
+        "tool.py",
+        "--unsupported-migration-test"
+      ],
+      "expected_exit": 2,
+      "output": "json"
+    }
+  ]
+}
